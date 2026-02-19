@@ -1,65 +1,241 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "envswitch - Switch between .env files instantly",
+  description: "A blazing fast CLI tool to switch between environment files",
+};
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative py-32 px-6 overflow-hidden">
+        {/* Background grid */}
+        <div className="absolute inset-0 opacity-20" 
+          style={{
+            backgroundImage: `linear-gradient(var(--border) 1px, transparent 1px),
+                             linear-gradient(90deg, var(--border) 1px, transparent 1px)`,
+            backgroundSize: '40px 40px'
+          }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+        
+        {/* Glow effect */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30 blur-[100px]" 
+          style={{ background: 'var(--accent)' }} 
+        />
+
+        <div className="relative max-w-5xl mx-auto">
+          {/* Logo / Brand */}
+          <div className="mb-8 opacity-0 animate-fade-in-up">
+            <span className="text-sm" style={{ color: 'var(--accent)' }}>
+              ● CLI_TOOL_v1.0
+            </span>
+          </div>
+
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 opacity-0 animate-fade-in-up animate-delay-100" 
+            style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+            env<span className="gradient-text">switch</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="text-xl md:text-2xl mb-12 max-w-2xl opacity-0 animate-fade-in-up animate-delay-200" 
+            style={{ color: 'var(--text-secondary)' }}>
+            Switch between .env files in milliseconds. <br/>
+            No more manually copying files.
           </p>
+
+          {/* Terminal Demo */}
+          <div className="terminal-window glow mb-16 opacity-0 animate-fade-in-up animate-delay-300 max-w-2xl">
+            <div className="terminal-header">
+              <span className="terminal-dot terminal-dot-red" />
+              <span className="terminal-dot terminal-dot-yellow" />
+              <span className="terminal-dot terminal-dot-green" />
+            </div>
+            <div className="terminal-body">
+              <div className="mb-4">
+                <span style={{ color: 'var(--accent)' }}>$</span> envswitch --list
+              </div>
+              <div className="mb-6 ml-4" style={{ color: 'var(--text-secondary)' }}>
+                Available environments:<br/>
+                <span className="ml-2">▸ staging</span><br/>
+                <span className="ml-2">▸ production</span><br/>
+                <span className="ml-2">▸ development</span>
+              </div>
+              <div className="mb-4">
+                <span style={{ color: 'var(--accent)' }}>$</span> envswitch production
+              </div>
+              <div className="ml-4" style={{ color: 'var(--text-secondary)' }}>
+                Switched to production environment<span className="animate-blink">_</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick install */}
+          <div className="opacity-0 animate-fade-in-up animate-delay-400">
+            <code className="block p-4 rounded-lg text-sm" 
+              style={{ 
+                background: 'var(--bg-secondary)', 
+                border: '1px solid var(--border)',
+                fontFamily: 'JetBrains Mono, monospace'
+              }}>
+              <span style={{ color: 'var(--accent)' }}>$</span> curl -fsSL https://8xu.github.io/envswitch/install.sh | bash
+            </code>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-32 px-6" style={{ background: 'var(--bg-secondary)' }}>
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-16">
+            Features<span style={{ color: 'var(--accent)' }}>.</span>
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Lightning Fast",
+                desc: "Switch environments in milliseconds. No overhead, just speed.",
+                icon: "⚡"
+              },
+              {
+                title: "Auto-Discovery",
+                desc: "Automatically finds your .envs directory. Works where you work.",
+                icon: "🔍"
+              },
+              {
+                title: "Safe & Smart",
+                desc: "Backs up your current .env before switching. Never lose your config.",
+                icon: "🛡️"
+              },
+              {
+                title: "Zero Config",
+                desc: "Works out of the box. No configuration files needed.",
+                icon: "✨"
+              }
+            ].map((feature, i) => (
+              <div key={i} className="p-8 rounded-xl transition-all duration-300 hover:glow"
+                style={{ 
+                  background: 'var(--bg-tertiary)', 
+                  border: '1px solid var(--border)'
+                }}>
+                <div className="text-4xl mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                <p style={{ color: 'var(--text-secondary)' }}>{feature.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Installation Section */}
+      <section className="py-32 px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">
+            Get Started<span style={{ color: 'var(--accent)' }}>.</span>
+          </h2>
+
+          <p className="text-xl mb-12 max-w-2xl" style={{ color: 'var(--text-secondary)' }}>
+            Install in one command. Works on macOS, Linux, and Windows.
+          </p>
+
+          {/* Step 1 */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-bold mb-4">
+              <span className="mr-4 px-3 py-1 rounded text-sm" 
+                style={{ background: 'var(--accent)', color: 'var(--bg-primary)' }}>
+                01
+              </span>
+              Run the installer
+            </h3>
+            <div className="terminal-window max-w-2xl">
+              <div className="terminal-header">
+                <span className="terminal-dot terminal-dot-red" />
+                <span className="terminal-dot terminal-dot-yellow" />
+                <span className="terminal-dot terminal-dot-green" />
+              </div>
+              <div className="terminal-body">
+                <code>
+                  <span style={{ color: 'var(--accent)' }}>$</span> curl -fsSL https://8xu.github.io/envswitch/install.sh | bash
+                </code>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 2 */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-bold mb-4">
+              <span className="mr-4 px-3 py-1 rounded text-sm" 
+                style={{ background: 'var(--accent)', color: 'var(--bg-primary)' }}>
+                02
+              </span>
+              Create your environments
+            </h3>
+            <div className="terminal-window max-w-2xl">
+              <div className="terminal-header">
+                <span className="terminal-dot terminal-dot-red" />
+                <span className="terminal-dot terminal-dot-yellow" />
+                <span className="terminal-dot terminal-dot-green" />
+              </div>
+              <div className="terminal-body">
+                <code>
+                  <span style={{ color: 'var(--text-secondary)' }}># Create .envs directory</span><br/>
+                  $ mkdir .envs<br/><br/>
+                  <span style={{ color: 'var(--text-secondary)' }}># Add your environment files</span><br/>
+                  $ cp .env .envs/.env.staging<br/>
+                  $ cp .env .envs/.env.production
+                </code>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 3 */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-bold mb-4">
+              <span className="mr-4 px-3 py-1 rounded text-sm" 
+                style={{ background: 'var(--accent)', color: 'var(--bg-primary)' }}>
+                03
+              </span>
+              Start switching
+            </h3>
+            <div className="terminal-window max-w-2xl">
+              <div className="terminal-header">
+                <span className="terminal-dot terminal-dot-red" />
+                <span className="terminal-dot terminal-dot-yellow" />
+                <span className="terminal-dot terminal-dot-green" />
+              </div>
+              <div className="terminal-body">
+                <code>
+                  <span style={{ color: 'var(--accent)' }}>$</span> envswitch staging<br/>
+                  Switched to staging environment<br/><br/>
+                  <span style={{ color: 'var(--accent)' }}>$</span> envswitch production<br/>
+                  Switched to production environment<span className="animate-blink">_</span>
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 px-6" style={{ borderTop: '1px solid var(--border)' }}>
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-2">
+            <span style={{ color: 'var(--accent)' }}>●</span>
+            <span>envswitch</span>
+          </div>
+          <p style={{ color: 'var(--text-secondary)' }} className="text-sm">
+            Built by <a href="https://github.com/8xu" className="hover:text-white transition-colors">8xu</a>
+          </p>
+          <div className="flex gap-6">
+            <a href="https://github.com/8xu/envswitch" 
+              className="text-sm hover:text-white transition-colors"
+              style={{ color: 'var(--text-secondary)' }}>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
