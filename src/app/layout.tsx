@@ -11,6 +11,18 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "envswitch - Switch between .env files instantly",
   description: "A blazing fast CLI tool to switch between environment files",
+  openGraph: {
+    title: "envswitch - Switch between .env files instantly",
+    description: "A blazing fast CLI tool to switch between environment files",
+    type: "website",
+    url: "https://envswitch.nyxkd.ro",
+    siteName: "envswitch",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "envswitch - Switch between .env files instantly",
+    description: "A blazing fast CLI tool to switch between environment files",
+  },
 };
 
 export default function RootLayout({
@@ -21,6 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link 
