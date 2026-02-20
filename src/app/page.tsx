@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import InstallCommand from "../components/InstallCommand";
 
 export const metadata: Metadata = {
   title: "envswitch - Switch between .env files instantly",
@@ -9,8 +10,24 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="min-h-screen">
+      {/* Disclaimer Banner */}
+      <div className="fixed top-0 left-0 right-0 z-50 px-4 py-2 text-center text-sm"
+        style={{ 
+          background: 'linear-gradient(90deg, #ff6b6b, #ffa500)',
+          color: '#000'
+        }}>
+        ⚠️ This project was vibe-coded and might not work properly.{' '}
+        <a 
+          href="https://github.com/8xu/envswitch/issues" 
+          target="_blank"
+          className="underline font-bold hover:opacity-80"
+        >
+          Open an issue
+        </a> if you find bugs.
+      </div>
+
       {/* Hero Section */}
-      <section className="relative py-32 px-6 overflow-hidden">
+      <section className="relative pt-32 px-6 overflow-hidden">
         {/* Background grid */}
         <div className="absolute inset-0 opacity-20" 
           style={{
@@ -72,14 +89,7 @@ export default function Home() {
 
           {/* Quick install */}
           <div className="opacity-0 animate-fade-in-up animate-delay-400">
-            <code className="block p-4 rounded-lg text-sm" 
-              style={{ 
-                background: 'var(--bg-secondary)', 
-                border: '1px solid var(--border)',
-                fontFamily: 'JetBrains Mono, monospace'
-              }}>
-              <span style={{ color: 'var(--accent)' }}>$</span> curl -fsSL https://8xu.github.io/envswitch/install.sh | bash
-            </code>
+            <InstallCommand command="curl -fsSL https://raw.githubusercontent.com/8xu/envswitch/main/install.sh | bash" />
           </div>
         </div>
       </section>
@@ -156,7 +166,7 @@ export default function Home() {
               </div>
               <div className="terminal-body">
                 <code>
-                  <span style={{ color: 'var(--accent)' }}>$</span> curl -fsSL https://8xu.github.io/envswitch/install.sh | bash
+                  <span style={{ color: 'var(--accent)' }}>$</span> curl -fsSL https://raw.githubusercontent.com/8xu/envswitch/main/install.sh | bash
                 </code>
               </div>
             </div>
