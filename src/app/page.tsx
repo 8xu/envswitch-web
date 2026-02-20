@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import InstallCommand from "../components/InstallCommand";
+import GitHubStars from "../components/GitHubStars";
 
 export const metadata: Metadata = {
   title: "envswitch - Switch between .env files instantly",
@@ -44,10 +45,11 @@ export default function Home() {
 
         <div className="relative max-w-5xl mx-auto">
           {/* Logo / Brand */}
-          <div className="mb-8 opacity-0 animate-fade-in-up">
+          <div className="mb-8 flex items-center gap-4 opacity-0 animate-fade-in-up">
             <span className="text-sm" style={{ color: 'var(--accent)' }}>
               ● CLI_TOOL_v1.0
             </span>
+            <GitHubStars />
           </div>
 
           <h1 className="text-6xl md:text-8xl font-bold mb-6 opacity-0 animate-fade-in-up animate-delay-100" 
