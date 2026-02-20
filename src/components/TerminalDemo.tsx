@@ -41,7 +41,7 @@ export default function TerminalDemo() {
             }}
           >
             {i < 3 || i === lines.length - 1 ? (
-              <span style={{ color: line.text.startswith('envswitch') ? 'var(--accent)' : 'var(--text-secondary)' }}>
+              <span style={{ color: line.text.startsWith('envswitch') ? 'var(--accent)' : 'var(--text-secondary)' }}>
                 {line.text}
                 {i === lines.length - 1 && line.text.includes('Switched') && (
                   <span className="animate-blink">_</span>
