@@ -3,6 +3,7 @@ import "./globals.css";
 import InstallCommand from "../components/InstallCommand";
 import GitHubStars from "../components/GitHubStars";
 import TerminalDemo from "../components/TerminalDemo";
+import VersionBadge from "../components/VersionBadge";
 
 export const metadata: Metadata = {
   title: "envswitch - Switch between .env files instantly",
@@ -47,9 +48,7 @@ export default function Home() {
         <div className="relative max-w-5xl mx-auto">
           {/* Logo / Brand */}
           <div className="mb-8 flex items-center gap-4 opacity-0 animate-fade-in-up">
-            <span className="text-sm" style={{ color: 'var(--accent)' }}>
-              ● CLI_TOOL_v1.0
-            </span>
+            <VersionBadge />
             <GitHubStars />
           </div>
 
@@ -213,6 +212,27 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <span style={{ color: 'var(--accent)' }}>●</span>
             <span>envswitch</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <a 
+              href="https://nextjs.org" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xs hover:opacity-80 transition-opacity"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              Built with Next.js
+            </a>
+            <span style={{ color: 'var(--border)' }}>•</span>
+            <a 
+              href="https://vercel.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xs hover:opacity-80 transition-opacity"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              Deployed on Vercel
+            </a>
           </div>
           <p style={{ color: 'var(--text-secondary)' }} className="text-sm">
             Built by <a href="https://github.com/8xu" className="hover:text-white transition-colors">8xu</a>
