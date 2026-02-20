@@ -4,6 +4,8 @@ import InstallCommand from "../components/InstallCommand";
 import GitHubStars from "../components/GitHubStars";
 import TerminalDemo from "../components/TerminalDemo";
 import VersionBadge from "../components/VersionBadge";
+import ScrollReveal from "../components/ScrollReveal";
+import Particles from "../components/Particles";
 
 export const metadata: Metadata = {
   title: "envswitch - Switch between .env files instantly",
@@ -13,6 +15,10 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="min-h-screen">
+      {/* Animated Background */}
+      <div className="animated-bg" />
+      <Particles />
+      
       {/* Disclaimer Banner */}
       <div className="fixed top-0 left-0 right-0 z-50 px-4 py-2 text-center text-sm"
         style={{ 
@@ -103,13 +109,24 @@ export default function Home() {
                 icon: "✨"
               }
             ].map((feature, i) => (
-              <div key={i} className="p-8 rounded-xl transition-all duration-300 hover:glow"
+              <div 
+                key={i} 
+                className="feature-card p-8 rounded-xl transition-all duration-300 cursor-pointer group"
                 style={{ 
                   background: 'var(--bg-tertiary)', 
-                  border: '1px solid var(--border)'
-                }}>
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                  border: '1px solid var(--border)',
+                  transform: 'translateY(0)',
+                }}
+              >
+                <div 
+                  className="text-4xl mb-4 transition-transform duration-300 group-hover:scale-110"
+                  style={{ display: 'inline-block' }}
+                >
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-2 group-hover:text-[var(--accent)] transition-colors duration-300">
+                  {feature.title}
+                </h3>
                 <p style={{ color: 'var(--text-secondary)' }}>{feature.desc}</p>
               </div>
             ))}
