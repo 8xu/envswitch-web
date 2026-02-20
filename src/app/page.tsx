@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import InstallCommand from "../components/InstallCommand";
 import GitHubStars from "../components/GitHubStars";
+import TerminalDemo from "../components/TerminalDemo";
 
 export const metadata: Metadata = {
   title: "envswitch - Switch between .env files instantly",
@@ -64,30 +65,7 @@ export default function Home() {
           </p>
 
           {/* Terminal Demo */}
-          <div className="terminal-window glow mb-16 opacity-0 animate-fade-in-up animate-delay-300 max-w-2xl">
-            <div className="terminal-header">
-              <span className="terminal-dot terminal-dot-red" />
-              <span className="terminal-dot terminal-dot-yellow" />
-              <span className="terminal-dot terminal-dot-green" />
-            </div>
-            <div className="terminal-body">
-              <div className="mb-4">
-                <span style={{ color: 'var(--accent)' }}>$</span> envswitch --list
-              </div>
-              <div className="mb-6 ml-4" style={{ color: 'var(--text-secondary)' }}>
-                Available environments:<br/>
-                <span className="ml-2">▸ staging</span><br/>
-                <span className="ml-2">▸ production</span><br/>
-                <span className="ml-2">▸ development</span>
-              </div>
-              <div className="mb-4">
-                <span style={{ color: 'var(--accent)' }}>$</span> envswitch production
-              </div>
-              <div className="ml-4" style={{ color: 'var(--text-secondary)' }}>
-                Switched to production environment<span className="animate-blink">_</span>
-              </div>
-            </div>
-          </div>
+          <TerminalDemo />
 
           {/* Quick install */}
           <div className="opacity-0 animate-fade-in-up animate-delay-400">
